@@ -18,13 +18,19 @@ const newSlice = createSlice({
   name: "cricketData",
   initialState: {
     liveData: [],
+    isLoading: false,
   },
   extraReducers: {
-    [getLiveData.pending]: (state, action) => {},
+    [getLiveData.pending]: (state, action) => {
+      state.isLoading = true;
+    },
     [getLiveData.fulfilled]: (state, { payload }) => {
       state.liveData = payload.data;
+      state.isLoading = false;
     },
-    [getLiveData.rejected]: (state, action) => {},
+    [getLiveData.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
   },
 
   reducers: {},

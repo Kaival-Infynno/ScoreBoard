@@ -5,3 +5,53 @@
 .shadow {
   box-shadow: 0 0 10px gray;
 }
+
+:root {
+  --loader-color: #4caf50;
+  --back-color: #a5d6a7;
+  --time: 2s;
+  --size: 3px;
+}
+
+.loader {
+  background-color: var(--main-color);
+  overflow: hidden;
+  width: auto;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: top;
+  align-content: top;
+  justify-content: flex-start;
+  z-index: 100000;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.loader__element {
+  height: var(--size);
+  width: 100%;
+  background: var(--back-color);
+}
+
+.loader__element:before {
+  content: "";
+  display: block;
+  background-color: var(--loader-color);
+  height: var(--size);
+  width: 0;
+  animation: getWidth var(--time) ease-in infinite;
+}
+
+@keyframes getWidth {
+  100% {
+    width: 100%;
+  }
+}
+
+.New :hover {
+  border-bottom: 5 px solid aqua;
+}

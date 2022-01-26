@@ -17,13 +17,19 @@ const cricketScoreSlice = createSlice({
   name: "cricketScore",
   initialState: {
     score: [],
+    isLoading: false,
   },
   extraReducers: {
-    [getLiveScore.pending]: (state, action) => {},
+    [getLiveScore.pending]: (state, action) => {
+      state.isLoading = true;
+    },
     [getLiveScore.fulfilled]: (state, { payload }) => {
       state.score = payload.data;
+      state.isLoading = false;
     },
-    [getLiveScore.rejected]: (state, action) => {},
+    [getLiveScore.rejected]: (state, action) => {
+      state.isLoading = false;
+    },
   },
   reducers: {},
 });
